@@ -1,0 +1,45 @@
+<ion-content [fullscreen]="true">
+  <div
+    class="w-full h-full bg-[url('/assets/back_login.jpg')] bg-cover bg-no-repeat flex flex-row justify-center items-center blur">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-xl="2.5" offset-xl="4.75" size-lg="4" offset-lg="4" size-xs="12" class="mt-32">
+          <ion-card>
+            <ion-card-header class=" flex justify-center items-center">
+              <img src="../../../assets/logo-vlc2.png" width="150px">
+            </ion-card-header>
+            <ion-card-content>
+              <form [formGroup]="formLogin" (ngSubmit)="login()">
+                <ion-row class="p-0">
+                  <ion-col size="12" class="mb-2">
+                    <ion-input color="secondary" formControlName="email" label="Username" label-placement="floating"
+                      fill="outline"></ion-input>
+                  </ion-col>
+                  <ion-col size-lg="12" class="relative">
+                    <ion-input fill="outline" label="Password" label-placement="floating" formControlName="password"
+                      [type]="showPassword ? 'text' : 'password'"></ion-input>
+                    <ion-icon class="absolute top-[30%] right-5 w-6 h-6 z-50 text-gray-500"
+                      [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"
+                      (click)="showPassword = !showPassword"></ion-icon>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="p-0 mb-4">
+                  <ion-col size-lg="12" class="text-right ">
+                    <ion-label class="bordered cursor-pointer" color="primary" (click)="showPasswordLost()">Password
+                      dimenticata?</ion-label>
+                  </ion-col>
+                </ion-row>
+
+                <ion-button color="primary" expand="full" type="submit" [disabled]="formLogin.invalid || isLoading">
+                  <ion-spinner class="loaderButton" *ngIf="isLoading" color="light"></ion-spinner>
+                  <ion-label>Login</ion-label>
+                </ion-button>
+              </form>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
